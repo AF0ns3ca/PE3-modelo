@@ -6,13 +6,26 @@
 let nom, apel, ident, date, edad, angle, cosen;
 let numArr = [];
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function play() {
   nombre();
   identidad();
   birthday();
   cos();
+  emptyArr(numArr);
   fillArray(numArr);
   write();
+
+  const windowButton = document.createElement("button");
+  windowButton.innerText = "Abrir Ventana";
+  document.body.appendChild(windowButton)
+  windowButton.addEventListener("click", () => {});
+
+  
+  const repeatButton = document.createElement("button");
+  repeatButton.innerText = "Repetir";
+  document.body.appendChild(repeatButton)
+  repeatButton.addEventListener("click", play);
+
 });
 
 const nombre = () => {
@@ -96,6 +109,10 @@ const higher = () => {
     }
     return maximo;
   };
+
+const emptyArr = (vector) => {
+    vector.splice(0, vector.length);
+};
 
 const fillArray = (vector) => {
     for (let i = 0; i < 6; i++) {
