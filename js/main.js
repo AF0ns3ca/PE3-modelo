@@ -1,5 +1,10 @@
+import { season } from "./dateActions.js";
+import { random } from "./random.js";
+import { fillArray } from "./arrayActions.js";
+import { printArray } from "./arrayActions.js";
+import { maxNumberArray } from "./arrayActions.js";
 /**
- * Autor:
+ * Autor: Alvaro Fonseca Hernandez
  * GitHub:
  */
 
@@ -9,9 +14,8 @@ let numArr = [];
 document.addEventListener("DOMContentLoaded", function play() {
   nombre();
   identidad();
-  birthday();
+  birthday(date, edad);
   cos();
-  emptyArr(numArr);
   fillArray(numArr);
   write();
 
@@ -26,7 +30,9 @@ document.addEventListener("DOMContentLoaded", function play() {
   const repeatButton = document.createElement("button");
   repeatButton.innerText = "Repetir";
   document.body.appendChild(repeatButton)
-  repeatButton.addEventListener("click", play);
+  repeatButton.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
 
 });
 
@@ -73,70 +79,12 @@ const birthday = () => {
   edad = Math.floor((fechaActual - date) / (1000 * 60 * 60 * 24 * 365));
 };
 
-const season = () => {
-  let dia = date.getDay;
-  let mes = date.getMonth;
-
-  if ((mes == 1 && dia >= 1) || mes == 2 || (mes == 3 && dia <= 20)) {
-    return "Invierno";
-  } else if ((mes == 3 && dia >= 21) || mes == 4 || (mes == 5 && dia <= 20)) {
-    return "Primavera";
-  } else if ((mes == 5 && dia >= 21) || mes == 6 || (mes == 7 && dia <= 20)) {
-    return "Verano";
-  } else if ((mes == 7 && dia >= 21) || mes == 8 || (mes == 9 && dia <= 20)) {
-    return "Otoño";
-  } else if ((mes == 9 && dia >= 21) || mes == 10 || (mes == 11 && dia <= 20)) {
-    return "Invierno";
-  } else {
-    return "Primavera";
-  }
-};
-
 const cos = () => {
     angle = prompt("Introduce un numero");
     while (angle === "") {
         angle = prompt("No puede estar vacio. Introduce un numero");
       }
   cosen = Math.cos(angle * (Math.PI / 180));
-};
-
-const higher = () => {
-    let maximo = numArr[0];
-    for (let i = 1; i < numArr.length; i++) {
-      if (numArr[i] > maximo) {
-        maximo = numArr[i];
-      }
-    }
-    return maximo;
-};
-
-const emptyArr = (vector) => {
-    vector.splice(0, vector.length);
-};
-
-const fillArray = (vector) => {
-    for (let i = 0; i < 6; i++) {
-      vector.push(random());
-    }
-};
-
-const printArrays = (vector) => {
-  let vectorCompleto = "[";
-
-  for (let i = 0; i < vector.length; i++) {
-    vectorCompleto += vector[i];
-    if (i < vector.length - 1) {
-      vectorCompleto += ", ";
-    }
-  }
-
-  vectorCompleto += "]";
-
-  return vectorCompleto;
-};
-
-const random = () => {
-  return Math.floor(Math.random() * 100) + 1;
 };
 
 const write = () => {
@@ -152,9 +100,9 @@ const write = () => {
      Tu nombre <b>menos las tres primeras letras</b> es <b>${identSplit()}</b><br>
      Tu nombre <b>TODO EN MAYUSCULAS</b> es <b>${upperIdent()}</b><br>
      Tu edad es <b>${edad}</b> años<br>
-     Naciste un feliz dia de <b>${season()}</b> del año <b>${date.getFullYear()}</b><br>
+     Naciste un feliz dia de <b>${season(date)}</b> del año <b>${date.getFullYear()}</b><br>
      El coseno de <b>${angle}</b> es <b>${cosen}</b><br>
-     El numero mayor de la lista <b>${printArrays(numArr)}</b> es <b>${higher()}</b><br>
+     El numero mayor de la lista <b>${printArray(numArr)}</b> es <b>${maxNumberArray(numArr)}</b><br>
      Ejemplo de numero al azar entre 0 y 100: <b>${random()}</b><br>
      </p>`
   );
