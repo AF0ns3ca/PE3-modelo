@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function play() {
   const windowButton = document.createElement("button");
   windowButton.innerText = "Abrir Ventana";
   document.body.appendChild(windowButton)
-  windowButton.addEventListener("click", () => {});
+  windowButton.addEventListener("click", () => {
+    window.open("/templates/newWindow.html", "", "resizable=no");
+  });
 
   
   const repeatButton = document.createElement("button");
@@ -33,7 +35,7 @@ const nombre = () => {
     while (nom === "") {
         nom = prompt("No puede estar vacio. Introduce tu nombre");
       }
-  };
+};
 
 const identidad = () => {
   apel = prompt("Introduce tus apellidos");
@@ -102,13 +104,11 @@ const higher = () => {
     let maximo = numArr[0];
     for (let i = 1; i < numArr.length; i++) {
       if (numArr[i] > maximo) {
-        console.log("numero actual " + numArr[i]);
         maximo = numArr[i];
-        console.log("maximo actual " + maximo);
       }
     }
     return maximo;
-  };
+};
 
 const emptyArr = (vector) => {
     vector.splice(0, vector.length);
@@ -118,7 +118,7 @@ const fillArray = (vector) => {
     for (let i = 0; i < 6; i++) {
       vector.push(random());
     }
-  };
+};
 
 const printArrays = (vector) => {
   let vectorCompleto = "[";
