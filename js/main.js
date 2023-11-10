@@ -3,6 +3,7 @@ import { random } from "./random.js";
 import { fillArray } from "./arrayActions.js";
 import { printArray } from "./arrayActions.js";
 import { maxNumberArray } from "./arrayActions.js";
+import { changeWindow } from "./changeWindow.js";
 /**
  * Autor: Alvaro Fonseca Hernandez
  * GitHub:
@@ -30,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function play() {
   const repeatButton = document.createElement("button");
   repeatButton.innerText = "Repetir";
   document.body.appendChild(repeatButton)
-  repeatButton.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
+  repeatButton.addEventListener("click", changeWindow)
 
 });
 
