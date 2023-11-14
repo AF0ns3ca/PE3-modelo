@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
         <b>URL completa:</b> ${window.location.href} <br>
         <b>Protocolo utilizado:</b> ${window.location.protocol} <br>
         </p>
-        <iframe src="https://www.example.com" height="600" width="800"></iframe>
+        <iframe src="https://hotellallastra.app/inicio" height="600" width="800"></iframe>
     `);
     document.close();
 });
