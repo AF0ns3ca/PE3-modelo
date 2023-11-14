@@ -13,27 +13,6 @@ import { changeWindow } from "./changeWindow.js";
 let nom, apel, ident, edad, angle, cosen, dia, mes, anio;
 // let date;
 let numArr = [];
-document.addEventListener("DOMContentLoaded", function play() {
-  nombre();
-  identidad();
-  // birthday();
-  birthdayV2();
-  cos();
-  fillArray(numArr);
-  write();
-
-  const windowButton = document.createElement("button");
-  windowButton.innerText = "Abrir Ventana";
-  document.body.appendChild(windowButton);
-  windowButton.addEventListener("click", () => {
-    window.open("/templates/newWindow.html", "", "resizable=no");
-  });
-
-  const repeatButton = document.createElement("button");
-  repeatButton.innerText = "Repetir";
-  document.body.appendChild(repeatButton);
-  repeatButton.addEventListener("click", changeWindow);
-});
 
 const nombre = () => {
   nom = prompt("Introduce tu nombre");
@@ -122,7 +101,7 @@ const birthdayV2 = () => {
 };
 
 const cos = () => {
-  angle = prompt("Introduce un numero");
+  angle = prompt("Introduce un numero para hacer su COSENO");
   while (angle === "" || isNaN(angle)) {
     angle = prompt("No puede estar vacio. Introduce un numero");
   }
@@ -157,3 +136,25 @@ const write = () => {
   );
   document.close();
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+  nombre();
+  identidad();
+  // birthday();
+  birthdayV2();
+  cos();
+  fillArray(numArr);
+  write();
+
+  const windowButton = document.createElement("button");
+  windowButton.innerText = "Abrir Ventana";
+  document.body.appendChild(windowButton);
+  windowButton.addEventListener("click", () => {
+    window.open("/templates/newWindow.html", "", "resizable=no");
+  });
+
+  const repeatButton = document.createElement("button");
+  repeatButton.innerText = "Reiniciar";
+  document.body.appendChild(repeatButton);
+  repeatButton.addEventListener("click", changeWindow);
+});
